@@ -4,7 +4,7 @@ require dirname(__DIR__) . '/vendor/autoload.php';
 
 use Sai\Swoole\Chat;
 
-$dotenv = new \Dotenv\Dotenv((__DIR__));
+$dotenv = \Dotenv\Dotenv::create(dirname(__DIR__));
 $dotenv->load();
 
 $options = [
