@@ -1,0 +1,149 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: rgba(25, 147, 147, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(25, 147, 147, 0.2);
+}
+
+#result{
+  position: absolute; 
+  z-index: 1001; 
+  text-align: center; 
+  background: #FF6D00;
+  color:#fff;
+  width: 100%;
+  height: 24px;
+}
+
+#chat-wrap{
+  position: relative;
+  width: 600px;
+  margin: 20px auto;
+  border: 1px solid #d3d3d3;
+}
+
+.chat-thread {
+  height: 300px;
+  margin: 4px auto 0 auto;
+  padding: 0 10px 0 0;
+  list-style: none;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.chat-thread li {
+  position: relative;
+  clear: both;
+  padding: 10px 50px;
+  line-height: 24px;
+}
+
+.chat-thread li img.head {
+  position: absolute;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  content: '';
+  background: #ccc;
+}
+
+.chat-thread li.you img.head {
+  left: 0px;
+  
+}
+
+.chat-thread li.me img.head {
+  right: 0;
+}
+
+
+.chat-thread li.me p:after{
+  border-right: 10px solid transparent;
+  right: -10px;
+  border-top: 10px solid #26A2FF;
+}
+.chat-thread li.you p:after{
+  border-left: 10px solid transparent;
+  left: -10px;
+  border-top: 10px solid rgba(25, 147, 147, 0.2);
+}
+.chat-thread p:after {
+  position: absolute;
+  top: 10px;
+  content: '';
+  width: 0;
+  height: 0;
+  
+}
+
+
+.chat-thread li p{
+  position: relative;
+  background-color: rgba(25, 147, 147, 0.2);
+  border-radius:10px;
+  padding:.5rem;
+  font-size:14px;
+  line-height:20px;
+  box-sizing:border-box;
+  vertical-align:middle;
+  display:table-cell;
+  word-wrap:break-word;
+}
+
+.chat-thread li.you p{
+  left: 10px;
+}
+
+.chat-thread li.me p{
+  background: #26A2FF;
+  right: 10px;
+  float: right;
+  color: #fff;
+}
+
+.send{
+  width: 600px;
+  margin: 0 auto;
+  position: relative;
+}
+.send input{
+  position: absolute;
+  width: 500px;
+  border: 1px solid #d0d0d0;
+  height: 40px;
+  padding-left:10px;
+}
+.btn{
+  position: absolute;
+  right: 2px;
+  top: 0;
+  width: 90px;
+  height: 40px;
+}
+
+/* Small screens */
+@media all and (max-width: 767px) {
+  #chat-wrap {
+    width: 90%;
+  }
+  .send{
+    width: 90%;
+  }
+  .send input{
+    width: 240px;
+  }
+}
+
