@@ -63,12 +63,12 @@ if ("WebSocket" in window) {
             // var d = window.URL.createObjectURL(e.data);
             // console.log(d);
             var img = '<img src="'+window.URL.createObjectURL(e.data)+'" width="180"/>';
-            $('.chat-thread').append('<li class="you"><img class="head" src="images/head1.jpg" alt=""><p>'+img+'</p></li>');
+            $('.chat-thread').append('<li class="you"><img class="head" src="http://image.13sai.com/sai.jpg" alt=""><p>'+img+'</p></li>');
         }else {
             // var p = document.createElement("p");
             // p.innerHTML = e.data;
             // result.appendChild(p);
-            $('.chat-thread').append('<li class="you"><img class="head" src="images/head1.jpg" alt=""><p>'+e.data+'</p></li>');
+            $('.chat-thread').append('<li class="you"><img class="head" src="http://image.13sai.com/sai.jpg" alt=""><p>'+e.data.replace(/\r\n/g, '<br>')+'</p></li>');
         }
         chatthread.scrollTop = chatthread.scrollHeight;
     }
