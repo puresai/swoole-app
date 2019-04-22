@@ -6,8 +6,6 @@ use swoole_websocket_server;
 class Chat
 {
     protected $ws;
-    protected $host = ;
-    protected $port = 9500;
     // 进程名称
     protected $taskName = 'Chat';
     // PID路径
@@ -24,7 +22,7 @@ class Chat
 
     public function __construct($options = [], $host = '0.0.0.0', $port = 9500)
     {
-        $this->ws = new swoole_websocket_server($this->host, $this->port);
+        $this->ws = new swoole_websocket_server($host, $port);
 
         if (!empty($options)) {
             $this->options = array_merge($this->options, $options);
