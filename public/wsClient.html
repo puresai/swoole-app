@@ -34,7 +34,7 @@
 <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script>
 if ("WebSocket" in window) {
-    var ws = new WebSocket("ws://swoole.omiji.top:9500");
+    var ws = new WebSocket("wss://api.omiji.top:9599");
 
     var result = document.querySelector('#result');
 
@@ -57,17 +57,9 @@ if ("WebSocket" in window) {
     }
     ws.onmessage = function(e) {
         if(e.data instanceof Blob) {
-            // var img = document.createElement("img");
-            // img.src = window.URL.createObjectURL(e.data);
-            // result.appendChild(img);
-            // var d = window.URL.createObjectURL(e.data);
-            // console.log(d);
             var img = '<img src="'+window.URL.createObjectURL(e.data)+'" width="180"/>';
             $('.chat-thread').append('<li class="you"><img class="head" src="http://image.13sai.com/sai.jpg" alt=""><p>'+img+'</p></li>');
         }else {
-            // var p = document.createElement("p");
-            // p.innerHTML = e.data;
-            // result.appendChild(p);
             $('.chat-thread').append('<li class="you"><img class="head" src="http://image.13sai.com/sai.jpg" alt=""><p>'+e.data.replace(/\r\n/g, '<br>')+'</p></li>');
         }
         chatthread.scrollTop = chatthread.scrollHeight;

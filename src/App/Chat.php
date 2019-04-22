@@ -6,7 +6,7 @@ use swoole_websocket_server;
 class Chat
 {
     protected $ws;
-    protected $host = '0.0.0.0';
+    protected $host = ;
     protected $port = 9500;
     // 进程名称
     protected $taskName = 'Chat';
@@ -16,13 +16,13 @@ class Chat
     protected $options = [
         'worker_num' => 4, //worker进程数,一般设置为CPU数的1-4倍  
         'daemonize' => true, //启用守护进程
-        'log_file' => '/data/logs/swoole.log', //指定swoole错误日志文件
+        'log_file' => '/data/logs/swoole-chat.log', //指定swoole错误日志文件
         'log_level' => 3, //日志级别 范围是0-5，0-DEBUG，1-TRACE，2-INFO，3-NOTICE，4-WARNING，5-ERROR
         'dispatch_mode' => 1, //数据包分发策略,1-轮询模式
     ];
  
 
-    public function __construct($options = [])
+    public function __construct($options = [], $host = '0.0.0.0', $port = 9500)
     {
         $this->ws = new swoole_websocket_server($this->host, $this->port);
 
