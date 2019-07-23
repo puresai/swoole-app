@@ -28,6 +28,12 @@ class Weather
 
     public static function getInfo($cityCode, $ext = 'all')
     {
+
+        $redis = Redis::getInstance();
+        if ($ret = $redis->get($cityCode)) {
+            return $ret;
+        }
+
         $url = 'https://restapi.amap.com/v3/weather/weatherInfo';
         $url = $url.'?'.http_build_query(['key' => getenv('WEATHER_KEY'), 'city' => $cityCode, 'extensions' => $ext]);
         $data = file_get_contents($url);
@@ -43,6 +49,8 @@ class Weather
         foreach ($list['forecasts'][0]['casts'] as $value) {
             $ret .= "\r\n".substr($value['date'], 5)."(".self::getWeekly($value['week']).")白天{$value['dayweather']}晚上{$value['nightweather']},气温{$value['nighttemp']}-{$value['daytemp']}摄氏度,风力{$value['daypower']}";
         }
+
+        $redis->setex($cityCode, 7200, $ret);
 
         return $ret;
     }
