@@ -9,8 +9,8 @@ $env->load();
 
 $options = [
     'daemonize' => true,
-    'ssl_cert_file'=> env('SSL_CERT'),
-    'ssl_key_file' =>env('SSL_KEY')
+    'ssl_cert_file'=> getenv('SSL_CERT'),
+    'ssl_key_file' => getenv('SSL_KEY')
 ];
 $ws = new Chat($options, '0.0.0.0', getenv('SERVER_PORT', 9500));
 $ws->start();

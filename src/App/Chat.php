@@ -22,7 +22,7 @@ class Chat
 
     public function __construct($options = [], $host = '0.0.0.0', $port = 9500)
     {
-        $this->ws = new swoole_websocket_server($host, $port);
+        $this->ws = new swoole_websocket_server($host, $port, SWOOLE_PROCESS, SWOOLE_SOCK_TCP | SWOOLE_SSL);
 
         if (!empty($options)) {
             $this->options = array_merge($this->options, $options);
