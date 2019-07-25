@@ -25,11 +25,11 @@ class Redis
     public static function init()
     {
         $redis = new \Redis;
-        $redis->connect(env('REDIS_HOST', '127.0.0.1'), env('REDIS_PORT', 6379), 3);
-        if ($auth = env('REDIS_PASSWORD', null)) {
+        $redis->connect(getenv('REDIS_HOST', '127.0.0.1'), getenv('REDIS_PORT', 6379), 3);
+        if ($auth = getenv('REDIS_PASSWORD', null)) {
             $redis->auth($auth);
         }
-        $redis->select(env('REDIS_DB', 0));
+        $redis->select(getenv('REDIS_DB', 0));
         self::$redis = $redis;
     }
 
